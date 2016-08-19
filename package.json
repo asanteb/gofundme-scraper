@@ -1,0 +1,21 @@
+{
+  "name": "gofundme-scraper",
+  "version": "1.0.0",
+  "description": "form poster",
+   "main": "gofundme.js",
+   "dependencies": {
+       "request" : "latest",
+       "cheerio" : "latest",
+       "express" : "latest",
+       "string" : "latest",
+       "mongoose" : "latest",
+       "mongoose-find-one-or-create" : "latest",
+       "json2csv" : "latest",
+       "line-reader" : "latest"
+   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "asante",
+  "license": "ISC"
+}
