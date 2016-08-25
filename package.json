@@ -11,7 +11,10 @@
        "mongoose" : "latest",
        "mongoose-find-one-or-create" : "latest",
        "json2csv" : "latest",
-       "line-reader" : "latest"
+       "line-reader" : "latest",
+       "readline" : "latest",
+       "schedule" : "latest",
+       "http-proxy-agent" : "latest"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

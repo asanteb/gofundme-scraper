@@ -1,43 +1,64 @@
+var Https = require('https');
+var url = require('url');
 var request = require('request');
 var cheerio = require('cheerio');
 var S = require('string');
 var Campaign = require('./config_db/campaign.js');
 var j2c = require('json2csv');
 var lineReader = require('line-reader');
-
+var HttpProxyAgent = require('http-proxy-agent');
 
 var headers = {
-    'User-Agent':       'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 7.0; InfoPath.3; .NET CLR 3.1.40767; Trident/6.0; en-IN)',
+    'User-Agent':       'Super Agent/0.0.1',
     'Content-Type':     'application/x-www-form-urlencoded'
+};
+
+var options = {
+  url: 'http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&port=80&country=US&user-agent=true&cookies=true&referrer=true',
+  method: 'GET',
+  headers: headers,
 };
 
 module.exports = function(search_key){
 
-  for (var i = 0; i < 50; i++){
-    var pageNumber = i + 1;
-    var options = {
-      //url: 'https://www.gofundme.com/mvc.php?route=search&page='+pageNumber+'&term='+search_key,
-      url: 'http://localhost:8112',
-      method: 'GET',
-      headers: headers,
-      // http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&port=80&country=US&user-agent=true&cookies=true&referrer=true
-      //proxy: 'http://213.251.249.106:80'
-    };
-  scrapePage(options);
-  }
 
-  // Start the request
-  function scrapePage(options){
-    request(options, function (error, response, body) {
-      function startScrape(){
-        var $ = cheerio.load(body,{ xmlMode: true});
-        new_body = $('div[class=details]').html();
+request(options, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    proxyBody = JSON.parse(body);
+    console.log(proxyBody.ipPort);
+    var proxy = process.env.http_proxy || 'http://'+proxyBody.ipPort;
 
-        //links = $('a').attr('href').text;
-        //links = S(new_body).between('//www.gofundme.com/', '?ssid').toString();
+  console.log('using proxy server %j', proxy);
+  var endpoint = process.argv[2] || 'https://www.gofundme.com';
+  console.log('attempting to GET %j', endpoint);
 
-        var objects = [];
-        $('div[class=details]').each(function(i, elem){
+  var opts = url.parse(endpoint);
+  var agent = new HttpProxyAgent(proxy);
+
+  Https.get(opts, function (res) {
+    console.log('"response" event!', res.headers);
+    res.pipe(process.stdout);
+  });
+
+  Https.request({
+    host: 'https://www.gofundme.com/mvc.php?route=search&page='+'2'+'&term='+search_key,
+    port: 443,
+    method: 'GET',
+    path: '/',
+    agent: agent,
+    header: "'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 7.0; InfoPath.3; .NET CLR 3.1.40767; Trident/6.0; en-IN)'"
+  },
+    function(res){
+      res.on('data', function (data){
+        function startScrape(){
+          var $ = cheerio.load(data,{ xmlMode: true});
+          new_body = $('div[class=details]').html();
+
+          //links = $('a').attr('href').text;
+          //links = S(new_body).between('//www.gofundme.com/', '?ssid').toString();
+
+          var objects = [];
+          $('div[class=details]').each(function(i, elem){
 
           //LINKS
 
@@ -89,7 +110,7 @@ module.exports = function(search_key){
               unique_id : unique_id
             };
 
-            //console.log(obj);
+            console.log(obj);
 
 
           Campaign.findOneOrCreate({'unique_id' : unique_id},
@@ -109,11 +130,14 @@ module.exports = function(search_key){
             });
         });
       }
-      if (!error && response.statusCode == 200) {
-        body = S(body).between('<!-- Main Content Container -->','<!-- END c-->').toString();
-        if(body.includes('No results found') === false){
-          startScrape();
-        }else{console.log('no results baby');}
-      }
-  });}
+      console.log(data.string.toString());
+
+    });
+  }).end();
+
+
+}else {
+  console.log(error);
+}
+});
 };
