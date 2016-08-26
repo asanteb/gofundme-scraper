@@ -56,7 +56,12 @@ app.get('/favicon.ico', function(req, res){
   app.get('/hi', function(req, res){
       res.sendFile(__dirname + '/public/index.html');
       console.log('hi');
-      console.log('IP is: ' + req.connection.remoteAddress);
+      var ip = req.headers['x-forwarded-for'] //||
+        //req.connection.remoteAddress ||
+        //req.socket.remoteAddress ||
+        //req.connection.socket.remoteAddress
+        ;
+      console.log(ip);
   });
 
 var search_key = 'cancer';
@@ -64,5 +69,5 @@ var search_key = 'cancer';
 //require('./get-search')(search_key);
 //require('./proxy_config')(search_key);
 
-//console.log('Connected to port 8112');
+console.log('Connected to port 8112');
 server.listen(8112);

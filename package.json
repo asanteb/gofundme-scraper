@@ -14,7 +14,8 @@
        "line-reader" : "latest",
        "readline" : "latest",
        "schedule" : "latest",
-       "http-proxy-agent" : "latest"
+       "http-proxy-agent" : "latest",
+       "jQuery" : "latest"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

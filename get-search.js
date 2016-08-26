@@ -4,6 +4,7 @@ var S = require('string');
 var Campaign = require('./config_db/campaign.js');
 var j2c = require('json2csv');
 var lineReader = require('line-reader');
+var $ = require('jQuery');
 
 
 var headers = {
@@ -11,17 +12,19 @@ var headers = {
     'Content-Type':     'application/x-www-form-urlencoded'
 };
 
-module.exports = function(search_key){
+module.exports = function(search_key, proxyAddress){
+
+$.getJson('')
 
   for (var i = 0; i < 50; i++){
     var pageNumber = i + 1;
     var options = {
       //url: 'https://www.gofundme.com/mvc.php?route=search&page='+pageNumber+'&term='+search_key,
-      url: 'http://localhost:8112',
+      url: 'http://localhost:8112/hi',
       method: 'GET',
       headers: headers,
       // http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&port=80&country=US&user-agent=true&cookies=true&referrer=true
-      //proxy: 'http://213.251.249.106:80'
+      proxy: proxyAddress//'http://98.101.132.125:3128'
     };
   scrapePage(options);
   }
@@ -89,7 +92,7 @@ module.exports = function(search_key){
               unique_id : unique_id
             };
 
-            //console.log(obj);
+            console.log(obj);
 
 
           Campaign.findOneOrCreate({'unique_id' : unique_id},
