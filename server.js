@@ -11,21 +11,26 @@ var express   = require('express'),
 mongoose.connect(configDB.url);
 
 //////////redacted till optomized
-/*
-function massSearch(){
+
+function getArray(){
+  var i = 0;
+  zipcodes = [];
+
   lineReader.eachLine('postal.txt', function(line, last) {
 
-    var search_key = line;
-    console.log('Searching postal code: ' + search_key);
-    require('./get-search.js')(search_key);
+    zipcodes[i] = line;
+    i++;
 
     if (last){
-      console.log('Searching postal code: ' + search_key);
+      zipcodes[i] = line;
       console.log('last zipcode');
-lo    }
+      console.log(zipcodes);
+
+
+    }
   });
 }
-*/
+
 //////////////////////
 //massSearch();
 
@@ -48,21 +53,7 @@ input_search();
 every('300s').do(input_search);
 */
 
-app.use(express.static(__dirname + '/public'));
-
-app.get('/favicon.ico', function(req, res){
-  });
-
-  app.get('/hi', function(req, res){
-      res.sendFile(__dirname + '/public/index.html');
-      console.log('hi');
-      var ip = req.headers['x-forwarded-for'] //||
-        //req.connection.remoteAddress ||
-        //req.socket.remoteAddress ||
-        //req.connection.socket.remoteAddress
-        ;
-      console.log(ip);
-  });
+getArray();
 
 var search_key = 'cancer';
 
