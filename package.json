@@ -15,7 +15,10 @@
        "readline" : "latest",
        "schedule" : "latest",
        "http-proxy-agent" : "latest",
-       "jQuery" : "latest"
+       "jQuery" : "latest",
+       "jsdom" : "latest",
+       "xmlhttprequest" : "latest",
+       "array-unique" : "latest"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
