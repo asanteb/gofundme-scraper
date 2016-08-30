@@ -18,7 +18,8 @@
        "jQuery" : "latest",
        "jsdom" : "latest",
        "xmlhttprequest" : "latest",
-       "array-unique" : "latest"
+       "array-unique" : "latest",
+       "system-sleep" : "latest"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

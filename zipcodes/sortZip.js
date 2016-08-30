@@ -32,7 +32,7 @@ lineReader.eachLine('postal.txt', function(line, last) {
     }
 
 
-    fs.writeFile("./temp/zipcodes.txt", str, function(err) {
+    fs.writeFile("../temp/zipcodes.txt", str, function(err) {
       if(err) {return console.log(err);}
 
       console.log("The file was saved!");
