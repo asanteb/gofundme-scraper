@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        
+        <meta name="viewport" content="width=1000">
+
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UwIGUFdSGwoAVFVRDwY="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+
+        
+        <title>Medical Fundraising: Raise Money for Medical Expenses &amp; Medical Bills</title>
+        <meta content="Raise money for medical bills: Fundraising for medical bills and related medical expenses." name="Description">
+
+        <meta content="GoFundMe, online fundraising, donation website, donations online, accept donations" name="Keywords">
+
+        <link rel="stylesheet" href="//www.gofundme.com/mvc/css/style14_newmarketing.css?ver=14.84" type="text/css" media="all">
+        <link rel="stylesheet" href="https://d25oniaj7o2jcw.cloudfront.net/categories.1468357637.8471.css" type="text/css" media="all">
+        <link href="//fonts.googleapis.com/css?family=Lato:400,700,300%7CMontserrat:400,700%7CRoboto:400,300,700" rel="stylesheet" type="text/css">
+
+        <meta property="fb:admins" content="710166738">
+        <meta property="fb:admins" content="2516177">
+        <meta property="fb:app_id" content="407682420960">
+
+        
+        <!-- Load jQuery from Google CDN, fall back with local version -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="//funds.gofundme.com/node_modules/jquery/dist/jquery.min.js">\x3C/script>')
+</script>
+
+<!-- If production, don't show JQMigrate logging -->
+    <script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js" integrity="sha256-nxdiQ4FdTm28eUNNQIJz5JodTMCF5/l32g5LwfUwZUo=" crossorigin="anonymous"></script>
+
+        <script src="//funds.gofundme.com/js/3.0/jquery.cookie.js" type="text/javascript"></script>
+        <script src="//funds.gofundme.com/js/3.0/fns.js?v=14.84" type="text/javascript"></script>
+        <script src="//funds.gofundme.com/js/3.0/search_www.js?v=14.84" type="text/javascript"></script>
+        <script src="//funds.gofundme.com/js/5.0/components/gaEventTracking.js"></script>
+        <script src="//funds.gofundme.com/js/5.0/components/analyticsEventTracking.js"></script>
+        <script src="//funds.gofundme.com/js/5.0/app/homepage/homepageAnalytics.js"></script>
+
+        <!-- global_b x -->
+        <!-- start Analytics -->
+<script type="text/javascript">
+    (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;}})(document,window.mixpanel||[]);
+</script>
+<script src="//funds.gofundme.com/js/3.0/mixpanel-2.7.5.min.js" type="text/javascript"></script>
+<script src="//funds.gofundme.com/js/3.0/jquery.cookie.js" type="text/javascript"></script>
+<script src="//funds.gofundme.com/js/3.0/visitorCookie.js" type="text/javascript"></script>
+<script>
+    mixpanel.init("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnROYW1lIjoiZ29mdW5kbWUtZmFzdHRyYWNrIiwiaW5wdXRMYWJlbCI6Ik1vYmlsZV9TREsiLCJpbnB1dFR5cGUiOiJKU1NESyJ9.VcK4Qu7IFdx-4eaNvFpO6-k7uLU4BnnoCaUKfLDYXBM", {"api_host":"https://inputs.alooma.com", track_links_timeout: 300, track_pageview: false, disable_notifications: true});
+    mixpanel.unregister('fund_id');
+    mixpanel.unregister('fund_name');
+    mixpanel.unregister('fund_url');
+    mixpanel.unregister('user_id');
+    mixpanel.unregister('person_id');
+    mixpanel.unregister('rcid');
+    mixpanel.unregister('donation');
+    mixpanel.unregister('experimentvariant_ids');
+    mixpanel.unregister('viewid');
+    mixpanel.unregister('viewrid');
+    mixpanel.unregister('pc_code');
+    mixpanel.unregister('rendered_at');
+    mixpanel.unregister('gfm');
+    mixpanel.unregister('flows');
+    mixpanel.unregister('flow');
+</script>
+
+<script src="//funds.gofundme.com/js/4.0/analytics.js?v=14.84" type="text/javascript"></script>
+<script src="//funds.gofundme.com/js/5.0/components/gaEventTracking.js?v=14.84" type="text/javascript"></script>
+<script src="//funds.gofundme.com/js/5.0/app/signup/signupAnalytics.js?v=14.84" type="text/javascript"></script>
+
+<!--<script src="//funds.gofundme.com/node_modules/node-polyglot/build/polyglot.js" type="text/javascript"></script>-->
+<!--<script src="//funds.gofundme.com/js/5.0/helpers/jsStringExternalization.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+try {
+
+    try {
+        mixpanel.identify($.cookie('gdid'));
+    } catch(e) {
+    }
+
+GFM.analytics.data.clickstream=false;GFM.analytics.setData("u", "");
+GFM.analytics.setData("p", "");
+GFM.analytics.setData("fud", "f31c5c546fa611e68ce1bc764e065880");
+GFM.analytics.setData("flw", {"SEARCH":"se_c"});
+GFM.analytics.setData("a", "f31b44226fa611e68ce1bc764e065880");
+GFM.analytics.setData("pcd", "");
+GFM.analytics.setData("vri", "f31b33ec6fa611e68ce1bc764e065880");
+GFM.analytics.setData('vi', 'pg_search_index');
+GFM.analytics.setData('ra', $.now());
+GFM.analytics.setData("gfm", {"os":"Other","browser":"Other","platform":"desktop","country":"US","lat":47.614498138428,"long":-122.34799957275});
+
+package = GFM.analytics.getPackage();
+mixpanel.register(package);
+
+
+//if (GFM.analytics.data.clickstream && typeof GFM.analytics.eventHandlerJS != "undefined") {
+//function new_addEventListener(_old_add_listener) {
+//    var old_add_listener = _old_add_listener;
+//    var events_of_interest = { click: 1, focus: 1, blur: 1 };
+//
+//    // Return a copy of a new addEventListener that wraps the old listener
+//    return function(eventName, eventHandler)
+//    {
+//        old_add_listener.call(this, eventName, function(event) {
+//            if (events_of_interest.hasOwnProperty(eventName))
+//            {
+//                event.data = event.data || { };
+//                event.data.tgt = 'mp_blackhole';
+//                GFM.analytics.eventHandlerJS(eventName, event);
+//            }
+//            eventHandler(event);
+//        });
+//    };
+//
+//};
+//
+//if (window.EventTarget) {  // Expected to work on chrome
+//    var oldAddEventListener = EventTarget.prototype.addEventListener;
+//    EventTarget.prototype.addEventListener = new_addEventListener(EventTarget.prototype.addEventListener);
+//} else {
+//    if (Window.prototype.addEventListener) {
+//        Window.prototype.addEventListener = new_addEventListener(Window.prototype.addEventListener);
+//    }
+//    if (Node.prototype.addEventListener) {
+//        Node.prototype.addEventListener = new_addEventListener(Node.prototype.addEventListener);
+//    }
+//};
+//
+//$(function() {
+//    $('a, input, textarea, div, span, img').on('click', GFM.analytics.poke).on('focus', GFM.analytics.poke).on('blur', GFM.analytics.poke);
+//});
+//}
+
+
+GFM.analytics.track_event('mp_page_view', package, false);
+
+} catch(e) {
+    if (window.console) {
+        window.console.log("Broken load: " + e);
+    }
+} // begun immediately after <script>
+
+</script>
+
+
+		<!-- Fastly Verification -->
+        <meta name="globalsign-domain-verification" content="jpcnVg6kuHYyEz5op6ZzxI2E53gePoVqca7RgL0aNq">
+
+</head>
+<body class="">
+<script>
+window.dataLayer = window.dataLayer || [ ];
+try {
+    dataLayer.push(GFM.analytics.getGaDataLayer());
+} catch(e) {}
+
+</script>
+
+<!-- GO Tag Manager -->
+<noscript>
+<iframe src="https://www.google-analytics.com/gtm/ns?id=GTM-KJFLHK" style="display:none;visibility:hidden" height="0" width="0"></iframe>
+</noscript>
+<script>(function(p,a,l,i,n,d,r,o,m,e){r={id:'GTM-KJFLHK',l:'dataLayer',m:'sync'};
+if(!r.gac){o=/;((__utma=)|([^;=]+=GAX?\d+\.))[^;]*/g;m=l.cookie.replace(
+/^|(; +)/g,';').match(o);if(m)r.gac=m.sort().join('').substring(1)};e=
+'https://www.google-analytics.com/gtm/js?';r.m=='sync'||(p['event']='gtm.js');
+for(d in r)if(r.hasOwnProperty(d))e+=n(d)+'='+n(r[d])+'&';a[r.l]=a[r.l]||[];
+a[r.l].push(p);if(r.m=='sync'){l.write('<'+i+' src="'+e+'"><\/'+i+'>');}else{
+j=l.createElement(i);j.async=!0;j.src=e;f=l.getElementsByTagName(i)[0];
+f.parentNode.insertBefore(j,f);}})({'gtm.start':1*new Date()},window,document,
+'script',encodeURIComponent);</script>
+<!-- End GO Tag Manager -->
+
+<!-- Production Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TDTFTZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>try{(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TDTFTZ');} catch (ignore) {}</script>
+<!-- End Production Google Tag Manager -->
+
+<div class="hd">
+        <div class="hd_main">
+
+                <a class="logo" href="//www.gofundme.com/" data-gfm-analytics-element="btn_header_logo"></a>
+                <div class="br" style="float:left; margin-right: 0;"></div>
+                                        <input id="search_term_top" blink="text" class="hd_s blink f_light" droptype="lil_suggest" type="text" value="Name, Title, or City..." title="Name, Title, or City..." style="margin-left: 14px;" autocomplete="off">
+                
+                                                                    <a href="//www.gofundme.com/sign-up/?pc=search_index_hd13" class="btn-newsu" data-gfm-analytics-element="btn_header_signup">Sign Up</a>
+                        
+                        <a href="https://www.gofundme.com/sign-in" class="menu si" style="" data-gfm-analytics-element="btn_header_signin">Sign In</a>
+                    
+                <a class="br" style="margin-left: 4px; margin-right: 6px;"></a>
+                <a href="//www.gofundme.com/contact?t=SEARCH_se_c" class="menu " style="margin-right:2px;" data-gfm-analytics-element="btn_header_menu_help">Help</a>
+				<a href="//www.gofundme.com/questions/" style="" class="menu" data-gfm-analytics-element="btn_header_menu_questions">Questions</a>
+                <a href="//www.gofundme.com/press/" style="" class="menu" data-gfm-analytics-element="btn_header_menu_press">Press</a>
+                <a href="//www.gofundme.com/success/" style="" class="menu" data-gfm-analytics-element="btn_header_menu_successstories">Success Stories</a>
+                <a href="//www.gofundme.com/tour/" style="" class="menu" data-gfm-analytics-element="btn_header_menu_howitworks">How it Works</a>
+                <div class="hps1">
+                        <div class="box">
+                                <div class="left">
+                                        <div class="lil_drop loc_suggest_drop_top" style="display:none;">
+                                                <!--                                                <a class="lil_suggest" >Suggested item...</a>-->
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+<!-- hd_main -->
+</div>
+<!-- hd -->
+        <div style="float:left; width:100%; margin-top:59px;"> </div>
+
+<div class="head_contain mb65">
+
+            <div class="head_main">
+    
+            <div class="cat_image cat11"></div>
+        <h1>Medical, Illness &amp; Healing</h1>
+
+        <div class="cat_dash"></div>
+    
+                        <h2>
+                <span>
+                    0 results found near Helsinki, Finland                </span>
+            </h2>
+
+            </div>
+    </div>
+    
+    <div style="clear: both;"></div>
+
+    <!-- Outter container for marketing page content -->
+    <div class="a">
+        
+                <div class="b">
+        <!-- category nav -->
+        <div class="n cat" data-gfm-analytics-element="btn_home_category">
+                
+                <div class="cathead top">MOST COMMON</div>
+
+                                <a href="/backtoschool/" class="c23 ">Back To School </a>
+                                <a href="/Medical-Illness-Healing/" class="c11 on">Medical</a>
+                                <a href="/Volunteer-Service/" class="c16 ">Volunteer</a>
+                                <a href="/Accidents-Personal-Crisis/" class="c1 ">Emergencies</a>
+                                <a href="/Education-Schools-Learning/" class="c8 ">Education</a>
+                                <a href="/Funerals-Memorials-Tributes/" class="c9 ">Memorials</a>
+                                <a href="/Sports-Teams-Clubs/" class="c15 ">Sports</a>
+                                <a href="/Animals-Pets/" class="c2 ">Animals</a>
+                
+                <div class="cathead mid">ALL CATEGORIES</div>
+
+                                        <a href="/Business-Entrepreneurs/" class="c4 ">Business</a>
+                                                <a href="/Non-Profits-Charities/" class="c13 ">Charity</a>
+                                                <a href="/Community-Neighbors/" class="c6 ">Community</a>
+                                                <a href="/Competitions-Pageants/" class="c18 ">Competitions</a>
+                                                <a href="/Creative-Arts-Music-Film/" class="c7 ">Creative</a>
+                                                <a href="/Celebrations-Special-Events/" class="c5 ">Events</a>
+                                                <a href="/Missions-Faith-Church/" class="c12 ">Faith</a>
+                                                <a href="/Babies-Kids-Family/" class="c3 ">Family</a>
+                                                        <a href="/National-News/" class="c23 ">National News</a>
+                                                        <a href="/Weddings-Honeymoons/" class="c17 ">Newlyweds</a>
+                                                <a href="/Other-Miscellaneous/" class="c14 ">Other</a>
+                                                <a href="/Travel-Adventure/" class="c10 ">Travel</a>
+                                                <a href="/Dreams-Hopes-Wishes/" class="c19 ">Wishes</a>
+                                </div>
+        <!-- end category nav -->
+</div>
+<!-- END b-->
+        
+
+        
+                <!-- Main Content Container -->
+        <div class="c ">
+
+                                <div class="search_top">
+
+                                                    <div class="title" id="search_within_label">Start a new search below</div>
+                                                <div class="fr">
+                        <a href="#" class="start_search" style="display:none;">Start a
+                            New Search</a>
+                    </div>
+                </div>
+                
+                
+                <div class="search_short cnt mb30" id="search_input_wrapper">
+            <div class="search_icon_update"></div>
+            <input class="search_field_short blink search-term-left" value="Search by name, keyword, or city..." title="Search by name, keyword, or city..." blink="active" id="search_term" droptype="list" autocomplete="off">
+            <a class="search-left" href="#" style="display: none;"></a>
+
+            <div class="results loc_suggest_drop" style="display:none;"></div>
+        </div>
+        
+
+        
+                        <div class="nores">No results found</div>
+            
+        
+    </div>
+    <!-- END c-->
+    <div style="clear:both;"></div>
+
+        <div class="fb_bar mb50">
+        <div class="copy">
+            Easily Find Campaigns
+            <span>See what your friends support and help spread the word!</span>
+        </div>
+
+        <a href="https://www.gofundme.com/?toggle=fundedbf" title="Funded by Friends" class="fbf fr mr27 mt30"></a>
+    </div>
+    
+</div>
+<!-- END a-->
+
+        <input type="hidden" class="search_category_filter search_filters" value="Medical-Illness-Healing">
+    
+
+    <!-- Footer Call to Action-->
+    <div class="btm_call">
+        <div class="btmmain">
+            <a href="//www.gofundme.com" class="gfmlg"></a>
+            <div class="btmcallout">
+                WORLD’S #1 FUNDRAISING SITE
+            </div>
+            <div class="checksbox">
+                <div class="check ml25">5-Minute Email Support</div>
+                <div class="check ml25">No deadlines or goal requirements</div>
+                <div class="check ml25">Mobile-Friendly Campaigns</div>
+                <div class="check ml25">Keep every donation you receive</div>
+                <div class="check ml25">GoFundMe Mobile App</div>
+                <div class="check ml25 mb">No penalties for missing goal</div>
+            </div>
+            <div style="clear:both;"></div>
+
+                            <a href="//www.gofundme.com/sign-up/?pc=search_index_ft14" class="btn-signup-free btn-check-mark cnt" data-gfm-analytics-element="btn_footer_signingupisfree">Signing Up Is Free</a>
+                    </div>
+    </div>
+    <!-- END Footer Call to Action-->
+
+<script>
+    $(".start_search").click(function () {
+        $(".search_filters").remove();
+        $("#search_within_label").text("Start a new search below");
+        $(this).hide();
+        $("#search_input_wrapper").show();
+        return false;
+    });
+
+    $('#btn-partner-banner').on('click', function() {
+        window.location = "https://www.gofundme.com//create";
+    });
+</script>
+<!-- Begin Footer -->
+<div class="footbase">
+        <div class="footmain">
+                <div class="footsec footfeatured">
+
+                        <a href="/press/" class="footnews " data-gfm-analytics-element="btn_footer_press"></a>
+                </div>
+                <div class="footdiv"></div>
+
+                <div class="footsec footlinks">
+                        <div class="linkbox" style="width: 188px;" data-gfm-analytics-element="btn_footer_menu">
+                                <span class="txt1">GET STARTED</span>
+                                <a href="/tour/" class="mt_10">How it Works</a>
+                                <a href="/success/">Success Stories</a>
+                                <a href="/questions/">Common Questions</a>
+                                <a href="/contact?t=SEARCH_se_c" rel="nofollow">Ask a Question</a>
+                                <a href="//funds.gofundme.com/index.php?route=edit2/customize&amp;start=1">Sign Up Now</a>
+                        </div>
+
+                        <div class="linkbox" style="width: 199px;" data-gfm-analytics-element="btn_footer_menu">
+                                <span class="txt1">LEARN MORE</span>
+                                <a href="/tour" class="mt_10">Watch the Video</a>                                <a href="/press/">GoFundMe Reviews</a>
+                                <a href="/pricing/">Pricing &amp; Fees</a>
+                                <a href="/fundraising-ideas/">Fundraising Ideas</a>
+                                <a href="/jobs/">We're Hiring!</a>
+                        </div>
+
+                        <div class="linkbox" style="width: 212px;" data-gfm-analytics-element="btn_footer_menu">
+                                <span class="txt1">MAJOR EVENTS</span>
+                                                                <a href="https://www.gofundme.com/flint-water-crisis/" class="mt_10">Flint Water Crisis Relief</a>
+                                                                        <a href="https://www.gofundme.com/2015-Storms/">Southern U.S. Storm Relief</a>
+                                                                        <a href="https://www.gofundme.com/Carolina-Flood-Relief/">Flood Relief in the Carolinas</a>
+                                                                        <a href="https://www.gofundme.com/Nepal-Earthquake-Relief/">Nepal Earthquake Relief</a>
+                                                                        <a href="https://www.gofundme.com/Help-Ferguson-Rebuild/">Help Ferguson Rebuild</a>
+                                                            </div>
+
+                        <div class="linkbox" style="width: 175px;" data-gfm-analytics-element="btn_footer_menu">
+                                <span class="txt1">CONNECT WITH US</span>
+                                <a href="/contact?t=SEARCH_se_c" class="mt_10" rel="nofollow">Ask a Question</a>
+                                <a href="/questions/">Common Questions</a>
+                                <a href="/contact?t=SEARCH_se_c">Help Center</a>
+                                <a href="/team/">Meet the Team</a>
+                                <a href="/media/">Media Center</a>
+                        </div>
+
+                        <a href="/contact?t=SEARCH_se_c" rel="nofollow" class="ft5"></a>
+                </div>
+
+                <div class="footdiv"></div>
+
+                <a href="https://gofundme.zendesk.com/entries/22590777-Is-my-country-supported-" class="footcntry">Supported Currencies</a>
+
+                <!-- Facebook -->
+                <div class="footsocial" style="width: 100px; height: 19px; margin-left: 10px;">
+                        <iframe class="home-fb-like" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fgofundme&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;margin-bottom: 10px;" allowtransparency="true"></iframe>
+                </div>
+<!-- End Facebook -->
+
+                <!-- Twitter -->
+                <div class="footsocial">
+                        <a href="https://twitter.com/gofundme" class="twitter-follow-button">Follow @gofundme</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+<!-- End Twitter-->
+                <div class="cl"></div>
+
+                <div class="footdiv"></div>
+
+                <div class="footcopy">
+
+                        <a class="mr10" href="/blog/">Blog</a>    |    
+                        <a class="mr10" href="/legal/">Legal</a>  |    
+                        <a class="mr10" href="/terms">Terms</a>  |    
+                        <a href="/privacy/">Privacy Policy </a>    |    © 2010-2016 GoFundMe                </div>
+        </div>
+</div>
+
+<!-- End Footer -->
+<script>
+    if (!$('#fb-root').length) {
+        $('body').append('<div id="fb-root"></div>');
+    }
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '407682420960',
+            xfbml      : true,
+            version    : 'v2.3',
+            cookie     : true,
+            status     : true
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+
+        $(window).on('load', function() {
+
+            var fblike_callback = function() {
+                var fbid = '';
+                fbid = FB.getUserID();
+                if (!fbid && FB.getAuthResponse()) {
+                    fbid = FB.getAuthResponse().userID || '';
+                }
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/iapi/index.php?route=share3/record_fbshare',
+                    data: {
+                        cat: 1,
+                        page: 4,
+                        platform: 0,
+                        fbid: fbid
+                    }
+                });
+            };
+
+            // workaround to detect when someone clicks on iframe first time
+            var fbOnBlurFunction = function() {
+                try {
+                    if (document.activeElement === document.getElementsByClassName('home-fb-like')[0]) {
+                        fblike_callback();
+                    }
+                } catch (err) {
+                }
+                removeEventListener('blur', fbOnBlurFunction);
+            };
+            addEventListener('blur', fbOnBlurFunction);
+        });
+
+        $(document).ready(function(){
+                $('.pg_msg a').attr('target', '_blank');
+                $('.update_content a:not(.shareopts a)').attr('target', '_blank');
+
+                //SIGN UP MOD
+                $('body').click(function() {
+                        $('.currency-select-div').hide();
+
+                });
+                $('.currency-select').click(function() {
+                        $('.currency-select-div').show();
+                        return false;
+                });
+
+                $('.currency-item').click(function() {
+                        $('.currency-select-div').hide();
+                        $('.currency-select').text($(this).text());
+                        $('.currency-mark').val($(this).attr('mark'));
+                        $('.currency-select').removeClass('c_usd c_gbp c_cad c_aud c_eur');
+                        $('.currency-select').addClass('c_'+$(this).text().toLowerCase());
+                        $('#currencyfield').val($(this).text());
+
+
+
+                        return false;
+                });
+                $('.pricefield-2').click(function () {
+                        setTimeout(function () {
+                                $('.pricefield-1').focus();
+                        }, 100);
+                        return false;
+                });
+                $('.pricefield-2').focusin(function () {
+                        setTimeout(function () {
+                                $('.pricefield-1').focus();
+                        }, 100);
+                        return false;
+                });
+
+                $('.signupmod-link').click(function () {
+                        $('form.signup-mod-form').eq(0).submit();
+                        return false;
+                });
+
+/*
+
+                //SEARHC MOD
+                $('.search-top').click(function() {
+
+                        if($('.search-term-top').val()==$('.search-term-top').attr('title'))
+                                return false;
+
+                        top.location='//www.gofundme.com/mvc.php?route=search&term='+$('.search-term-top').val();
+                        return false;
+                });
+
+                $('.search-term-top').keypress( function(event) {
+                        if (event.keyCode == 13)
+                        {
+                                if($('.search-term-top').val()==$('.search-term-top').attr('title'))
+                                        return false;
+
+                                top.location='//www.gofundme.com/mvc.php?route=search&term='+$('.search-term-top').val();
+
+                                return false;
+                        }
+                });
+
+                $('.search-left').click(function() {
+                        var searchVal = $('.search-term-left').val();
+
+                        if(searchVal==$('.search-term-left').attr('title') || searchVal == "")
+                                return false;
+
+                        var destination = '//www.gofundme.com/mvc.php?route=search';
+
+                        var searchTerm = $("#subsearchTerm").val();
+
+                        if(searchTerm !== undefined && !isPotentialPostalCode(searchVal)){
+                                searchTerm += " AND " + val;
+                        }else{
+                                searchTerm = val;
+                        }
+
+
+
+                        if ($('.search_location_zip_filter').length > 0){
+                                destination +="&addterm="+encodeURIComponent(searchTerm)
+                                    +"&term="+$('.search_location_zip_filter').val()
+                                    +"&country="+$('.search_location_country_filter').val();
+                        }else if ($('.search_partner_filter').length > 0) {
+                                destination ="//www.gofundme.com/partner/"+$('.search_partner_filter').val()+"?term="+encodeURIComponent(searchTerm);
+                        }else if ($('.search_category_filter').length > 0){
+                                destination ="//www.gofundme.com/"+$('.search_category_filter').val()+"?term="+encodeURIComponent(searchTerm);
+                        }else{
+                                destination +="&term="+encodeURIComponent(searchTerm);
+                        }
+
+                        top.location=destination;
+                        return false;
+                });
+
+                $('.search-term-left').keypress( function(event) {
+                        if (event.keyCode == 13)
+                        {
+                                $('.search-left').click();
+                                return false;
+                        }
+                });
+
+                $('.search-main').click(function() {
+
+
+                        if($('.search-term-main').val()==$('.search-term-main').attr('title'))
+                                return false;
+
+                        top.location='//www.gofundme.com/mvc.php?route=search&term='+$('.search-term-main').val();
+                        return false;
+                });
+
+                $('.search-term-main').keypress( function(event) {
+                        if (event.keyCode == 13)
+                        {
+                                if($('.search-term-main').val()==$('.search-term-main').attr('title'))
+                                        return false;
+
+                                top.location='//www.gofundme.com/mvc.php?route=search&term='+$('.search-term-main').val();
+
+                                return false;
+                        }
+                });
+
+*/
+
+        });
+
+</script>
+
+<script type="text/javascript">
+    if (typeof(_gat) == 'object')
+    {
+        var pageTracker = _gat._getTracker("");
+                pageTracker._trackPageview();
+            }
+</script>
+<script type="text/javascript">
+    
+
+    var _sf_async_config={uid:10613,domain:"www.gofundme.com",useCanonical:true
+                    };
+    (function(){
+        function loadChartbeat() {
+            window._sf_endpt=(new Date()).getTime();
+            var e = document.createElement('script');
+            e.setAttribute('language', 'javascript');
+            e.setAttribute('type', 'text/javascript');
+            e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+            document.body.appendChild(e);
+        }
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+            loadChartbeat : function() { oldonload(); loadChartbeat(); };
+    })();
+
+</script>
+
+<!--script>
+    window.intercomSettings = {
+        app_id: "yps4hvnc"
+            };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/oqir6j0k';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script-->
+
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"313ceb8fb7","applicationID":"9004387","transactionName":"MQMDMBcAWRdQV0RYCQhJIhEWFVgJHkdVUBQFDk4NCwVSHA==","queueTime":0,"applicationTime":40,"atts":"HUQARl8aShk=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+</body>
+<script src="//funds.gofundme.com/js/5.0/components/gaEventTracking.js"></script>
+</html>

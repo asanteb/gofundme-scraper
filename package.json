@@ -15,7 +15,7 @@
        "readline" : "latest",
        "schedule" : "latest",
        "http-proxy-agent" : "latest",
-       "jQuery" : "latest",
+       "jquery" : "latest",
        "jsdom" : "latest",
        "xmlhttprequest" : "latest",
        "array-unique" : "latest",
