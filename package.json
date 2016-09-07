@@ -19,7 +19,9 @@
        "jsdom" : "latest",
        "xmlhttprequest" : "latest",
        "array-unique" : "latest",
-       "system-sleep" : "latest"
+       "system-sleep" : "latest",
+       "redis" : "latest",
+       "chance" : "latest"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

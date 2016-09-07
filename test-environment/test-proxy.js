@@ -7,8 +7,8 @@ var headers = {
 };
 
 var options = {
-  //US ONLY//  url: 'http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&country=US&user-agent=true&cookies=true&referrer=true',
-  url: 'http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&user-agent=true&cookies=true&referrer=true',
+  //US ONLY// url: 'http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=0&country=US&user-agent=true&cookies=true&referrer=true&protocol=http',
+  url: 'http://gimmeproxy.com/api/getProxy?get=true&supportsHttps=true&maxCheckPeriod=3600&anonymityLevel=1&user-agent=true&cookies=true&referrer=true&protocol=http',
   method: 'GET',
   headers: headers
 };
@@ -45,9 +45,9 @@ request(options, function (error, response, body1) {
                                         proxy10 = proxyBody.curl;
 
                                         str = '[' + '"' + proxy1 + '"' + ',' + '"' + proxy2 + '"' + ',' + '"' + proxy3 + '"' + ',' + '"' + proxy4 + '"' + ',' + '"' + proxy5 + '"' + ',' +
-                                         '"' +proxy6 + '"' + ',' + '"' + proxy7 + '"' + ',' + '"' + proxy8 + '"' + ',' + '"' + proxy9 + '"' + ',' + '"' + proxy10 + '"' + ']';
+                                         '"' +proxy6 + '"' + ',' + '"' + proxy7 + '"' + ',' + '"' + proxy8 + '"' + ',' + '"' + proxy9 + '"' + ',' + '"' + proxy10 + '"' + ','+ ']';
 
-                                        fs.writeFile("./temp/proxies.txt", str, function(err) {
+                                        fs.writeFile("./temp/proxies10.txt", str, function(err) {
                                           if(err) {return console.log(err);}
 
                                           console.log("The file was saved!");
