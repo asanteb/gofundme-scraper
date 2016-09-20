@@ -39,7 +39,7 @@ class Scrape
     while $k < 50 do
 
       url = "https://www.gofundme.com/Medical-Illness-Healing?page=#{$k+1}&term=#{$zip}"
-      @doc = Nokogiri::HTML(open(url, :proxy => $proxy))
+      @doc = Nokogiri::HTML(open(url)) #, :proxy => $proxy))
         temp = @doc.to_s
         noResults = temp.between(@noResults[0],@noResults[1])
         break if noResults == 'No results found'
@@ -131,7 +131,7 @@ zipcodes = ["00401", "00501", "01001", "01101", "01201", "01301", "01401", "0150
 
 zipcodes.each do |zip|
   $zip = zip
-  @continue = true if zip == '14801' # Enter worker start
+  @continue = true if zip == '15101' # Enter worker start
 
   puts "////////////////////////////////////////"
   puts "ZIPCODE NUMBER--------------------#{zip}"

@@ -15,4 +15,4 @@ var campaignSchema = mongoose.Schema({
 });
 
 campaignSchema.plugin(findOneOrCreate);
-module.exports = mongoose.model('emails', campaignSchema);
+module.exports = mongoose.model('emails2', campaignSchema);
